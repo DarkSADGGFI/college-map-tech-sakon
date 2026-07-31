@@ -132,18 +132,22 @@ function showBuildingDetails(properties) {
     // Set Title
     titleEl.innerText = properties.Name || "Unnamed Building";
 
-    // Helper function to update the sidebar image display
-    function updateSidebarImage(imageUrl) {
-        if (imageUrl) {
-            imgContainer.style.backgroundImage = `url('${imageUrl}')`;
-            imgContainer.style.backgroundSize = 'cover';
-            imgContainer.style.backgroundPosition = 'center';
-            imgContainer.innerHTML = ''; 
-        } else {
-            imgContainer.style.backgroundImage = 'none';
-            imgContainer.innerHTML = '<span>📷 [ Image Placeholder ]</span>';
-        }
+function updateSidebarImage(imageUrl) {
+    if (imageUrl) {
+        imgContainer.style.backgroundImage = `url('${imageUrl}')`;
+        
+        // 1. STRETCH to fill both width and height completely
+        imgContainer.style.backgroundSize = '100% 100%'; 
+        
+        // 2. Prevent repeating if aspect ratios differ
+        imgContainer.style.backgroundRepeat = 'no-repeat'; 
+        
+        imgContainer.innerHTML = ''; 
+    } else {
+        imgContainer.style.backgroundImage = 'none';
+        imgContainer.innerHTML = '<span>📷 [ Image Placeholder ]</span>';
     }
+}
 
     // Set initial default building image when opened
     updateSidebarImage(properties.image);
