@@ -1,0 +1,30 @@
+/* Core Layout Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.app-container {
+    width: 100%;
+    height: 100%;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background-color: #e5e3df;
+}
+
+/* Optional styling to make custom layer popups look clean */
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    padding: 4px;
+}
