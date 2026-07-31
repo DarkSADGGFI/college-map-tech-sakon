@@ -1,2 +1,2 @@
-# ollege-map-tech-sakon
+# college-map-tech-sakon
 ollege-map
