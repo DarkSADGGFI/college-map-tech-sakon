@@ -72,7 +72,7 @@ const campusGeoJSON = {
       "type": "Feature",
   "properties": {
     "Name": "อาคาร 6 แผนกวิชาคอมพิวเตอร์",
-    "image": "images/building6_main.jpg",
+    "image": "IMAGE/First creator.jpg",
     "rooms": [
       {
         "name": "Smart Classroom🤓🧠",
