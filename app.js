@@ -132,22 +132,34 @@ function showBuildingDetails(properties) {
     // Set Title
     titleEl.innerText = properties.Name || "Unnamed Building";
 
-    // Set Image (Uses placeholder image if none exists in GeoJSON)
-    if (properties.image) {
-        imgContainer.style.backgroundImage = `url('${properties.image}')`;
-        imgContainer.innerHTML = ''; 
-    } else {
-        imgContainer.style.backgroundImage = 'none';
-        imgContainer.innerHTML = '<span>📷 [ Image Placeholder ]</span>';
+    // Helper function to update the sidebar image display
+    function updateSidebarImage(imageUrl) {
+        if (imageUrl) {
+            imgContainer.style.backgroundImage = `url('${imageUrl}')`;
+            imgContainer.style.backgroundSize = 'cover';
+            imgContainer.style.backgroundPosition = 'center';
+            imgContainer.innerHTML = ''; 
+        } else {
+            imgContainer.style.backgroundImage = 'none';
+            imgContainer.innerHTML = '<span>📷 [ Image Placeholder ]</span>';
+        }
     }
+
+    // Set initial default building image when opened
+    updateSidebarImage(properties.image);
 
     // Populate Rooms List
     roomsList.innerHTML = '';
-    const rooms = properties.rooms || ["General Area", "Main Office"]; // Fallback rooms
+    const rooms = properties.rooms || []; 
     
     rooms.forEach(room => {
+        // Handle both string rooms and object rooms gracefully
+        const roomName = typeof room === 'string' ? room : room.name;
+        const roomImage = typeof room === 'object' ? room.image : null;
+
         const roomBtn = document.createElement('button');
-        roomBtn.innerText = room;
+        roomBtn.className = 'room-btn';
+        roomBtn.innerText = roomName;
         roomBtn.style.cssText = `
             text-align: left;
             padding: 8px 12px;
@@ -156,14 +168,39 @@ function showBuildingDetails(properties) {
             border-radius: 4px;
             cursor: pointer;
             font-size: 14px;
-            transition: background 0.2s;
+            transition: all 0.2s ease;
         `;
         
-        roomBtn.onmouseover = () => roomBtn.style.backgroundColor = '#e9ecef';
-        roomBtn.onmouseout = () => roomBtn.style.backgroundColor = '#f8f9fa';
+        roomBtn.onmouseover = () => {
+            if (!roomBtn.classList.contains('active')) {
+                roomBtn.style.backgroundColor = '#e9ecef';
+            }
+        };
+        roomBtn.onmouseout = () => {
+            if (!roomBtn.classList.contains('active')) {
+                roomBtn.style.backgroundColor = '#f8f9fa';
+            }
+        };
         
+        // CLICK EVENT: Update the sidebar image to this room's photo
         roomBtn.onclick = function() {
-            alert(`Selected: ${room} in ${properties.Name}`);
+            // 1. Swap the sidebar image
+            if (roomImage) {
+                updateSidebarImage(roomImage);
+            }
+
+            // 2. Add visual active state to the selected room button
+            document.querySelectorAll('.room-btn').forEach(btn => {
+                btn.classList.remove('active');
+                btn.style.backgroundColor = '#f8f9fa';
+                btn.style.borderColor = '#ddd';
+                btn.style.fontWeight = 'normal';
+            });
+
+            roomBtn.classList.add('active');
+            roomBtn.style.backgroundColor = '#e7f1ff';
+            roomBtn.style.borderColor = '#0056b3';
+            roomBtn.style.fontWeight = 'bold';
         };
 
         roomsList.appendChild(roomBtn);

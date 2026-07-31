@@ -70,12 +70,47 @@ const campusGeoJSON = {
     },
     {
       "type": "Feature",
-      "properties": {
-        "Name": "อาคาร 6 แผนกวิชาคอมพิวเตอร์",
-        "rooms": ["Smart Classroom🤓🧠", "ห้อง 631", "ห้อง 632", "ห้อง 633","ห้อง 634","ห้อง 641","ห้อง 642","ห้องพักครู",,"ห้อง 644"],
-        "tessellate": -1,
-        "extrude": 0,
-        "visibility": -1
+  "properties": {
+    "Name": "อาคาร 6 แผนกวิชาคอมพิวเตอร์",
+    "image": "images/building6_main.jpg",
+    "rooms": [
+      {
+        "name": "Smart Classroom🤓🧠",
+        "image": "IMAGE/First creator.jpg"
+      },
+      {
+        "name": "ห้อง 631",
+        "image": "IMAGE/First creator.jpg"
+      },
+      {
+        "name": "ห้อง 632",
+        "image": "IMAGE/First creator.jpg"
+      },
+      {
+        "name": "ห้อง 633",
+        "image": "IMAGE/First creator.jpg"
+      },
+      {
+        "name": "ห้อง 634",
+        "image": "IMAGE/First creator.jpg"
+      },
+      {
+        "name": "ห้อง 641",
+        "image": "IMAGE/First creator.jpg"
+      },
+      {
+        "name": "ห้อง 642",
+        "image": "IMAGE/First creator.jpg"
+      },
+      {
+        "name": "ห้องพักครู",
+        "image": "IMAGE/First creator.jpg"
+      },
+      {
+        "name": "ห้อง 644",
+        "image": "IMAGE/First creator.jpg"
+      }
+    ]
       },
       "geometry": {
         "type": "Polygon",
