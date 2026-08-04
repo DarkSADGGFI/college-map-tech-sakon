@@ -1,10 +1,10 @@
-// 1. Ultra-tight boundary box hugging just the campus rectangle property
-const corner1 = L.latLng(17.192500, 104.085000); // South-West limit
-const corner2 = L.latLng(17.197800, 104.091500); // North-East limit
-const campusBounds = L.latLngBounds(corner1, corner2);
-const buildingLayers = [];
+// Campus map boundaries
+var corner1 = L.latLng(17.192500, 104.085000);
+var corner2 = L.latLng(17.197800, 104.091500);
+var campusBounds = L.latLngBounds(corner1, corner2);
+var buildingLayers = buildingLayers || [];
 
-// 2. Initialize the map with zoomControl turned OFF
+// Initialize the map and lock it to the campus area
 const map = L.map('map', {
     center: [17.195288, 104.088414],
     zoom: 18,
@@ -15,10 +15,10 @@ const map = L.map('map', {
     zoomControl: false // Clears top-left for the sidebar
 });
 
-// 3. Add zoom controls to top-right
+// Add zoom controls to the top-right corner
 L.control.zoom({ position: 'topright' }).addTo(map);
 
-// 4. Base Tile Layers
+// Base tile layers
 const googleSatelliteTiles = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
     attribution: 'Tiles &copy; Google Maps',
     maxZoom: 20,
@@ -32,7 +32,7 @@ const standardTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y
 
 googleSatelliteTiles.addTo(map);
 
-// 5. Layer Groups & Reference Pins
+// Layer groups and reference pins
 const buildingLayer = L.layerGroup().addTo(map);
 const navigationPins = L.layerGroup().addTo(map);
 
@@ -40,7 +40,7 @@ const campusPin = L.marker([17.195288, 104.088414]);
 campusPin.bindPopup("<b>Sakon Nakhon Technical College</b><br>Campus Navigation Center.");
 campusPin.addTo(navigationPins);
 
-// 6. Load GeoJSON Buildings
+// Load campus GeoJSON building polygons
 L.geoJSON(campusGeoJSON, {
     style: function(feature) {
         return {
@@ -75,7 +75,7 @@ L.geoJSON(campusGeoJSON, {
     }
 }).addTo(buildingLayer);
 
-// 7. Layer Control UI
+// Layer control UI
 const baseMaps = {
     "Satellite View": googleSatelliteTiles,
     "Standard View": standardTiles
@@ -88,7 +88,7 @@ const overlayMaps = {
 
 L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
 
-// 8. Search Engine Functionality
+// Search box behavior
 document.getElementById('search-input').addEventListener('input', function(e) {
     const searchText = e.target.value.toLowerCase();
     const resultsContainer = document.getElementById('search-results');
@@ -121,7 +121,6 @@ document.getElementById('search-input').addEventListener('input', function(e) {
     });
 });
 
-// 9. Sidebar Building Detail View Helper
 function showBuildingDetails(properties) {
     const searchView = document.getElementById('search-view');
     const detailView = document.getElementById('detail-view');
@@ -129,91 +128,122 @@ function showBuildingDetails(properties) {
     const imgContainer = document.getElementById('building-image-container');
     const roomsList = document.getElementById('rooms-list');
 
-    // Set Title
-    titleEl.innerText = properties.Name || "Unnamed Building";
+    // 1. Set Building Title
+    if (titleEl) {
+        titleEl.innerText = properties.Name || "Unnamed Building";
+    }
 
-function updateSidebarImage(imageUrl) {
-    if (imageUrl) {
-        imgContainer.style.backgroundImage = `url('${imageUrl}')`;
+    // 2. Helper to update sidebar image
+    function updateSidebarImage(imageUrl) {
+        if (!imgContainer) return;
+        if (imageUrl) {
+            imgContainer.style.backgroundImage = `url('${imageUrl}')`;
+            imgContainer.style.backgroundSize = 'cover';
+            imgContainer.style.backgroundPosition = 'center';
+            imgContainer.style.backgroundRepeat = 'no-repeat';
+            imgContainer.innerHTML = ''; 
+        } else {
+            imgContainer.style.backgroundImage = 'none';
+            imgContainer.innerHTML = '<span>📷 [ Image Placeholder ]</span>';
+        }
+    }
+
+    updateSidebarImage(properties.image);
+
+    // 3. Populate Rooms List
+    if (roomsList) {
+        roomsList.innerHTML = '';
+        const rooms = properties.rooms || []; 
         
-        // 1. STRETCH to fill both width and height completely
-        imgContainer.style.backgroundSize = '100% 100%'; 
-        
-        // 2. Prevent repeating if aspect ratios differ
-        imgContainer.style.backgroundRepeat = 'no-repeat'; 
-        
-        imgContainer.innerHTML = ''; 
-    } else {
-        imgContainer.style.backgroundImage = 'none';
-        imgContainer.innerHTML = '<span>📷 [ Image Placeholder ]</span>';
+        if (rooms.length > 0) {
+            rooms.forEach(room => {
+                const roomName = typeof room === 'string' ? room : room.name;
+                const roomImage = typeof room === 'object' ? room.image : null;
+
+                const roomBtn = document.createElement('button');
+                roomBtn.className = 'room-btn';
+                roomBtn.innerText = roomName;
+                roomBtn.style.cssText = `
+                    text-align: left;
+                    padding: 8px 12px;
+                    background: #f8f9fa;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    width: 100%;
+                    margin-bottom: 4px;
+                `;
+                
+                roomBtn.onclick = function() {
+                    if (roomImage) updateSidebarImage(roomImage);
+
+                    document.querySelectorAll('.room-btn').forEach(btn => {
+                        btn.style.backgroundColor = '#f8f9fa';
+                        btn.style.borderColor = '#ddd';
+                        btn.style.fontWeight = 'normal';
+                    });
+
+                    roomBtn.style.backgroundColor = '#e7f1ff';
+                    roomBtn.style.borderColor = '#0056b3';
+                    roomBtn.style.fontWeight = 'bold';
+                };
+
+                roomsList.appendChild(roomBtn);
+            });
+        } else {
+            // Room Fallback Message
+            roomsList.innerHTML = '<p style="color: #6c757d; font-size: 14px; padding: 8px;">No room details available for this building.</p>';
+        }
+    }
+
+    // Add or reuse the navigation button inside the detail panel
+    let dirBtn = document.getElementById('direction-btn');
+    if (!dirBtn && detailView) {
+        dirBtn = document.createElement('button');
+        dirBtn.id = 'direction-btn';
+        dirBtn.style.cssText = `
+            width: 100%;
+            margin-top: 15px;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        `;
+        detailView.appendChild(dirBtn);
+    }
+
+    if (dirBtn) {
+        dirBtn.innerText = `🚩 Navigate to ${properties.Name || "Building"}`;
+
+        // Draw a route from the current user position to the selected building center
+        dirBtn.onclick = function() {
+            const match = buildingLayers.find(b => b.name === properties.Name);
+            if (!match) return;
+
+            const startLatLng = typeof userMarker !== 'undefined' && userMarker
+                ? userMarker.getLatLng()
+                : (currentStartCoords || L.latLng(17.195288, 104.088414));
+            const destLatLng = match.layer.getBounds().getCenter();
+
+            if (typeof drawRouteLine === 'function') {
+                drawRouteLine(startLatLng, destLatLng);
+            } else {
+                alert('Navigation route drawing is not available yet.');
+            }
+        };
+    }
+
+    // 5. SWITCH SIDEBAR VIEWS (Crucial for sidebar visibility)
+    if (searchView && detailView) {
+        searchView.style.display = 'none';
+        detailView.style.display = 'block';
     }
 }
 
-    // Set initial default building image when opened
-    updateSidebarImage(properties.image);
-
-    // Populate Rooms List
-    roomsList.innerHTML = '';
-    const rooms = properties.rooms || []; 
-    
-    rooms.forEach(room => {
-        // Handle both string rooms and object rooms gracefully
-        const roomName = typeof room === 'string' ? room : room.name;
-        const roomImage = typeof room === 'object' ? room.image : null;
-
-        const roomBtn = document.createElement('button');
-        roomBtn.className = 'room-btn';
-        roomBtn.innerText = roomName;
-        roomBtn.style.cssText = `
-            text-align: left;
-            padding: 8px 12px;
-            background: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        `;
-        
-        roomBtn.onmouseover = () => {
-            if (!roomBtn.classList.contains('active')) {
-                roomBtn.style.backgroundColor = '#e9ecef';
-            }
-        };
-        roomBtn.onmouseout = () => {
-            if (!roomBtn.classList.contains('active')) {
-                roomBtn.style.backgroundColor = '#f8f9fa';
-            }
-        };
-        
-        // CLICK EVENT: Update the sidebar image to this room's photo
-        roomBtn.onclick = function() {
-            // 1. Swap the sidebar image
-            if (roomImage) {
-                updateSidebarImage(roomImage);
-            }
-
-            // 2. Add visual active state to the selected room button
-            document.querySelectorAll('.room-btn').forEach(btn => {
-                btn.classList.remove('active');
-                btn.style.backgroundColor = '#f8f9fa';
-                btn.style.borderColor = '#ddd';
-                btn.style.fontWeight = 'normal';
-            });
-
-            roomBtn.classList.add('active');
-            roomBtn.style.backgroundColor = '#e7f1ff';
-            roomBtn.style.borderColor = '#0056b3';
-            roomBtn.style.fontWeight = 'bold';
-        };
-
-        roomsList.appendChild(roomBtn);
-    });
-
-    // Switch sidebar views
-    searchView.style.display = 'none';
-    detailView.style.display = 'block';
-}
 
 // 10. Back Button Event Handler
 document.getElementById('back-btn').addEventListener('click', function() {
