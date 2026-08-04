@@ -76,12 +76,43 @@ function drawRoute(startNodeId, endNodeId) {
     map.fitBounds(activeRouteLayer.getBounds(), { padding: [40, 40] });
 }
 
+function findNearestWaypoint(latlng) {
+    let nearestNode = null;
+    let nearestDistance = Number.POSITIVE_INFINITY;
+
+    Object.entries(waypoints).forEach(([nodeId, point]) => {
+        const distance = Math.hypot(latlng.lat - point.lat, latlng.lng - point.lng);
+        if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestNode = nodeId;
+        }
+    });
+
+    return nearestNode;
+}
+
 function drawRouteLine(startLatLng, destLatLng) {
     if (activeRouteLayer) {
         map.removeLayer(activeRouteLayer);
     }
 
-    activeRouteLayer = L.polyline([startLatLng, destLatLng], {
+    const startNode = findNearestWaypoint(startLatLng);
+    const destNode = findNearestWaypoint(destLatLng);
+    const routeCoordinates = [startLatLng];
+
+    if (startNode && destNode) {
+        const pathNodeIds = findShortestPath(startNode, destNode);
+
+        if (pathNodeIds && pathNodeIds.length > 1) {
+            pathNodeIds.forEach((id) => {
+                routeCoordinates.push(L.latLng(waypoints[id].lat, waypoints[id].lng));
+            });
+        }
+    }
+
+    routeCoordinates.push(destLatLng);
+
+    activeRouteLayer = L.polyline(routeCoordinates, {
         color: '#ff3300',
         weight: 5,
         opacity: 0.8,

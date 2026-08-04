@@ -1,10 +1,10 @@
-// Campus map boundaries
+// campus bounds
 var corner1 = L.latLng(17.192500, 104.085000);
 var corner2 = L.latLng(17.197800, 104.091500);
 var campusBounds = L.latLngBounds(corner1, corner2);
 var buildingLayers = buildingLayers || [];
 
-// Initialize the map and lock it to the campus area
+// make the map stay inside the campus area
 const map = L.map('map', {
     center: [17.195288, 104.088414],
     zoom: 18,
@@ -15,10 +15,10 @@ const map = L.map('map', {
     zoomControl: false // Clears top-left for the sidebar
 });
 
-// Add zoom controls to the top-right corner
+// zoom buttons on the top-right
 L.control.zoom({ position: 'topright' }).addTo(map);
 
-// Base tile layers
+// map styles
 const googleSatelliteTiles = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
     attribution: 'Tiles &copy; Google Maps',
     maxZoom: 20,
@@ -32,7 +32,7 @@ const standardTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y
 
 googleSatelliteTiles.addTo(map);
 
-// Layer groups and reference pins
+// layers for buildings and pins
 const buildingLayer = L.layerGroup().addTo(map);
 const navigationPins = L.layerGroup().addTo(map);
 
@@ -40,7 +40,7 @@ const campusPin = L.marker([17.195288, 104.088414]);
 campusPin.bindPopup("<b>Sakon Nakhon Technical College</b><br>Campus Navigation Center.");
 campusPin.addTo(navigationPins);
 
-// Load campus GeoJSON building polygons
+// load campus building shapes
 L.geoJSON(campusGeoJSON, {
     style: function(feature) {
         return {
@@ -75,7 +75,7 @@ L.geoJSON(campusGeoJSON, {
     }
 }).addTo(buildingLayer);
 
-// Layer control UI
+// map layer switcher
 const baseMaps = {
     "Satellite View": googleSatelliteTiles,
     "Standard View": standardTiles
@@ -88,7 +88,7 @@ const overlayMaps = {
 
 L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
 
-// Search box behavior
+// search input handling
 document.getElementById('search-input').addEventListener('input', function(e) {
     const searchText = e.target.value.toLowerCase();
     const resultsContainer = document.getElementById('search-results');
@@ -197,7 +197,7 @@ function showBuildingDetails(properties) {
         }
     }
 
-    // Add or reuse the navigation button inside the detail panel
+    // make the direction button inside the detail panel
     let dirBtn = document.getElementById('direction-btn');
     if (!dirBtn && detailView) {
         dirBtn = document.createElement('button');
@@ -219,7 +219,7 @@ function showBuildingDetails(properties) {
     if (dirBtn) {
         dirBtn.innerText = `🚩 Navigate to ${properties.Name || "Building"}`;
 
-        // Draw a route from the current user position to the selected building center
+        // route from current spot to the clicked building
         dirBtn.onclick = function() {
             const match = buildingLayers.find(b => b.name === properties.Name);
             if (!match) return;
