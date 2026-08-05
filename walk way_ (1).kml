@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document id="document">
+	<name>walk way?</name>
+	<gx:CascadingStyle kml:id="__managed_style_0693EE44EA410840A200_highlight">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0693EE44EA410840A200_normal">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=1976d2&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0693EE44EA410840A200">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_0693EE44EA410840A200_normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0693EE44EA410840A200_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_0819ABFBE6410838B000_highlight">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_0819ABFBE6410838B000">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_0819ABFBE6410838B000_normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_0819ABFBE6410838B000_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<gx:CascadingStyle kml:id="__managed_style_097BFE1A904107F368BC_highlight">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<scale>1.2</scale>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=388e3c&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>4.8</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_0819ABFBE6410838B000_normal">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<gx:CascadingStyle kml:id="__managed_style_097BFE1A904107F368BC_normal">
+		<styleUrl>https://earth.google.com/balloon_components/base/1.1.0.0/card_template.kml#main</styleUrl>
+		<Style>
+			<IconStyle>
+				<Icon>
+					<href>https://earth.google.com/earth/document/icon?color=388e3c&amp;id=2000&amp;scale=4</href>
+				</Icon>
+				<hotSpot x="64" y="128" xunits="pixels" yunits="insetPixels"/>
+			</IconStyle>
+			<LabelStyle>
+			</LabelStyle>
+			<LineStyle>
+				<color>ff2dc0fb</color>
+				<width>3.2</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>40ffffff</color>
+			</PolyStyle>
+			<BalloonStyle>
+			</BalloonStyle>
+		</Style>
+	</gx:CascadingStyle>
+	<StyleMap id="__managed_style_097BFE1A904107F368BC">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#__managed_style_097BFE1A904107F368BC_normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#__managed_style_097BFE1A904107F368BC_highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Placemark id="0422A2E23F4107EA5C1C">
+		<name>middle of grass field</name>
+		<LookAt>
+			<longitude>104.0877043362264</longitude>
+			<latitude>17.1938213902195</latitude>
+			<altitude>172.611051197155</altitude>
+			<heading>33.8873727483679</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>250.4515065250234</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_097BFE1A904107F368BC</styleUrl>
+		<Point>
+			<coordinates>104.0875778680477,17.19387056999671,172.8115919691421</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="09D8805D1A410838AFF4">
+		<name>Main gate</name>
+		<LookAt>
+			<longitude>104.0887127664789</longitude>
+			<latitude>17.19510722193979</latitude>
+			<altitude>171.6398812788154</altitude>
+			<heading>4.405303727637343e-09</heading>
+			<tilt>2.486829600234125</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>86.95565447163972</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0819ABFBE6410838B000</styleUrl>
+		<Point>
+			<coordinates>104.0888151174978,17.19513814724714,171.7870688509952</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="04681D09AF410840A1E4">
+		<name>Main road 1</name>
+		<LookAt>
+			<longitude>104.0883648594519</longitude>
+			<latitude>17.19445980148688</latitude>
+			<altitude>173.9303319721004</altitude>
+			<heading>8.506389098053392</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>154.7767636606295</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0693EE44EA410840A200</styleUrl>
+		<LineString>
+			<coordinates>
+				104.0888153904702,17.19513887790847,0 104.0884050716721,17.19447199787477,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0A1481BFF04108410091">
+		<name>Building 6 node</name>
+		<LookAt>
+			<longitude>104.0883908938764</longitude>
+			<latitude>17.19447245783975</latitude>
+			<altitude>173.9129136001775</altitude>
+			<heading>8.506389098184897</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>56.94898405890855</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_097BFE1A904107F368BC</styleUrl>
+		<Point>
+			<coordinates>104.0884049868181,17.19447060637371,173.9562349948691</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="05D334911B410848DCFF">
+		<name>Middle road</name>
+		<LookAt>
+			<longitude>104.0879280163173</longitude>
+			<latitude>17.19463138016195</latitude>
+			<altitude>172.7990444707305</altitude>
+			<heading>12.72668074893788</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>219.518798307472</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0693EE44EA410840A200</styleUrl>
+		<LineString>
+			<coordinates>
+				104.088404221665,17.19447698869899,0 104.087438192156,17.19499450298937,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0BE17BF90441084916FC">
+		<name>english building node</name>
+		<LookAt>
+			<longitude>104.087493308605</longitude>
+			<latitude>17.19493367936607</latitude>
+			<altitude>172.9567274184035</altitude>
+			<heading>12.72656791129467</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>111.3242347745108</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_097BFE1A904107F368BC</styleUrl>
+		<Point>
+			<coordinates>104.0874386047456,17.1949959159847,172.8574157056781</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0A249C29B841084A1384">
+		<name>Main gate node-junction</name>
+		<LookAt>
+			<longitude>104.0883236142805</longitude>
+			<latitude>17.19528477425106</latitude>
+			<altitude>171.3230393676234</altitude>
+			<heading>19.82259422327792</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>211.5948174607547</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_097BFE1A904107F368BC</styleUrl>
+		<Point>
+			<coordinates>104.0887874157878,17.19509252391537,172.0169791298941</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="018847A2F141084A8E3F">
+		<name>walk way though a parking lot</name>
+		<LookAt>
+			<longitude>104.0883236142805</longitude>
+			<latitude>17.19528477425106</latitude>
+			<altitude>171.3230393676234</altitude>
+			<heading>19.82259422327792</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>211.5948174607547</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0693EE44EA410840A200</styleUrl>
+		<LineString>
+			<coordinates>
+				104.0887940051386,17.19509847277503,0 104.0878137922619,17.19562206083662,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="056BB8B76041084ACD24">
+		<name>Libary node</name>
+		<LookAt>
+			<longitude>104.0879520297233</longitude>
+			<latitude>17.19546739525225</latitude>
+			<altitude>172.3686583635233</altitude>
+			<heading>19.82248437056713</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>210.5491832432381</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_097BFE1A904107F368BC</styleUrl>
+		<Point>
+			<coordinates>104.087815269936,17.19562008929402,172.3726605523805</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0D06F85F1541084B2E37">
+		<name>Libary road</name>
+		<LookAt>
+			<longitude>104.0876192828327</longitude>
+			<latitude>17.19541179419495</latitude>
+			<altitude>171.7703792634877</altitude>
+			<heading>19.82238599981267</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>211.1474897931112</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_0693EE44EA410840A200</styleUrl>
+		<LineString>
+			<coordinates>
+				104.0878138312349,17.19562005028439,0 104.087436253749,17.19499486464872,0 
+			</coordinates>
+		</LineString>
+	</Placemark>
+	<Placemark id="0C58B1C47C41084B8EE8">
+		<name>Building 6 junction</name>
+		<LookAt>
+			<longitude>104.0881357753309</longitude>
+			<latitude>17.19459007080584</latitude>
+			<altitude>173.1531560225229</altitude>
+			<heading>19.82258276397507</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>106.8893865578139</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_097BFE1A904107F368BC</styleUrl>
+		<Point>
+			<coordinates>104.0881578725069,17.19460624724617,173.1314407211636</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="058772BCBE41084BEE27">
+		<name>Building 2 junction 1</name>
+		<LookAt>
+			<longitude>104.0878486461801</longitude>
+			<latitude>17.19474287986479</latitude>
+			<altitude>172.8021620502365</altitude>
+			<heading>19.82251158465247</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>77.77463652364533</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_097BFE1A904107F368BC</styleUrl>
+		<Point>
+			<coordinates>104.0878893418764,17.19475122160774,172.8021614122301</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0ECD51388541084C3CB4">
+		<name>Building 2 junction 2</name>
+		<LookAt>
+			<longitude>104.0875823273512</longitude>
+			<latitude>17.19492893840383</latitude>
+			<altitude>172.7667639654182</altitude>
+			<heading>19.82244261178916</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>121.0266212313036</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_097BFE1A904107F368BC</styleUrl>
+		<Point>
+			<coordinates>104.0875895244927,17.1949109316675,172.7543359057709</coordinates>
+		</Point>
+	</Placemark>
+	<Placemark id="0EE6C86DD641084CDC71">
+		<name>cafeteria node junction</name>
+		<LookAt>
+			<longitude>104.088626923419</longitude>
+			<latitude>17.19489773304378</latitude>
+			<altitude>172.8369293419193</altitude>
+			<heading>19.82251407679666</heading>
+			<tilt>0</tilt>
+			<gx:fovy>35</gx:fovy>
+			<range>146.8451573837228</range>
+			<altitudeMode>absolute</altitudeMode>
+		</LookAt>
+		<styleUrl>#__managed_style_097BFE1A904107F368BC</styleUrl>
+		<Point>
+			<coordinates>104.088606927519,17.19479467416091,172.8483299693132</coordinates>
+		</Point>
+	</Placemark>
+</Document>
+</kml>

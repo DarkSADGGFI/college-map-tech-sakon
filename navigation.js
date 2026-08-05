@@ -13,10 +13,10 @@ const waypoints = {
 
 // 2. Network Connections (Which points connect to which)
 const graph = {
-    "main_gate": ["center_junction", "cafeteria"],
-    "center_junction": ["main_gate", "tech_bldg"],
+    "main_gate": ["center_junction"],
+    "center_junction": ["main_gate", "tech_bldg", "cafeteria"],
     "tech_bldg": ["center_junction"],
-    "cafeteria": ["main_gate"]
+    "cafeteria": ["center_junction"]
 };
 
 // Global layer variable to store the drawn route line
@@ -77,18 +77,21 @@ function drawRoute(startNodeId, endNodeId) {
 }
 
 function findNearestWaypoint(latlng) {
+    const maxSnapDistanceMeters = 30;
     let nearestNode = null;
     let nearestDistance = Number.POSITIVE_INFINITY;
 
     Object.entries(waypoints).forEach(([nodeId, point]) => {
-        const distance = Math.hypot(latlng.lat - point.lat, latlng.lng - point.lng);
+        const candidateLatLng = L.latLng(point.lat, point.lng);
+        const distance = latlng.distanceTo(candidateLatLng);
+
         if (distance < nearestDistance) {
             nearestDistance = distance;
             nearestNode = nodeId;
         }
     });
 
-    return nearestNode;
+    return nearestDistance <= maxSnapDistanceMeters ? nearestNode : null;
 }
 
 function drawRouteLine(startLatLng, destLatLng) {

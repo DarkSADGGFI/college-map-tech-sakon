@@ -35,6 +35,25 @@ googleSatelliteTiles.addTo(map);
 // layers for buildings and pins
 const buildingLayer = L.layerGroup().addTo(map);
 const navigationPins = L.layerGroup().addTo(map);
+const walkPathLayer = L.layerGroup().addTo(map);
+
+fetch('walk-paths-graph.geojson')
+    .then(response => response.json())
+    .then(geoJsonData => {
+        L.geoJSON(geoJsonData, {
+            style: function () {
+                return {
+                    color: '#00aaff',
+                    weight: 4,
+                    opacity: 0.9,
+                    dashArray: '6 6'
+                };
+            }
+        }).addTo(walkPathLayer);
+    })
+    .catch(error => {
+        console.error('Unable to load walk path GeoJSON:', error);
+    });
 
 const campusPin = L.marker([17.195288, 104.088414]);
 campusPin.bindPopup("<b>Sakon Nakhon Technical College</b><br>Campus Navigation Center.");
@@ -83,7 +102,8 @@ const baseMaps = {
 
 const overlayMaps = {
     "Campus Buildings": buildingLayer,
-    "Navigation Pins": navigationPins
+    "Navigation Pins": navigationPins,
+    "Walk Paths": walkPathLayer
 };
 
 L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
